@@ -42,7 +42,6 @@ export const AuthContextProvider = ({ children }) => {
       withCredentials: true,
     });
   };
-
   /* Login API Call */
   const LoginApiCall = async (payload) => {
     await axios.post("http://localhost:5000/Api/login", payload, {
@@ -50,14 +49,12 @@ export const AuthContextProvider = ({ children }) => {
     });
 
     /* get user profile Api call */
-
     const userprofile = await axios.get(
       "http://localhost:5000/Api/userprofile",
       {
         withCredentials: true,
       }
     );
-
     setUser(userprofile.data);
   };
 
