@@ -16,7 +16,7 @@ const ProductList = ({ data }) => {
     return (
       <SafeAreaView style={styles.listContainer}>
         <TouchableOpacity
-          onPress={() => router.replace(`/Components/${item._id}`)}
+          onPress={() => router.push(`/Components/${item._id}`)}
         >
           <View style={styles.imageContainer}>
             <Image
