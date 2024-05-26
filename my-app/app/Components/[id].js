@@ -1,6 +1,6 @@
-import { useLocalSearchParams, useRouter} from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, SafeAreaView,Image } from "react-native";
+import { View, Text, Button, SafeAreaView, Image } from "react-native";
 import axios from "axios";
 
 const productDetail = () => {
@@ -9,9 +9,11 @@ const productDetail = () => {
   const router = useRouter();
   /* Fetch single product from back-end */
   const singleProduct = async () => {
-    const res = await axios.get(`http://192.168.0.9:5000/Api/products/${id}`,{
-      withCredentials:true
-  }).catch((err) => console.log(err));
+    const res = await axios
+      .get(`http://192.168.0.9:5000/Api/products/${id}`, {
+        withCredentials: true,
+      })
+      .catch((err) => console.log(err));
     const data = await res.data;
     console.log(data);
     return data;
@@ -21,17 +23,17 @@ const productDetail = () => {
   }, [id]);
   /* it will display the file after the prduct is fetched from the back-end!!! */
   return (
-    detailProduct&& (
+    detailProduct && (
       <SafeAreaView>
         <View>
           <Image
             source={{
-              uri: "http://10.0.2.2:5000/public/uploads/1708190026909_.png",
+              uri: "http://10.0.2.2:5000/public/uploads/1708597929856_.png",
             }}
             style={{ height: 300, width: 300 }}
           />
         </View>
-        <View>
+        <View className="flex-row justify-around mb-10 mt-10">
           <Text className="text-1xl pt-2 mb-2">{detailProduct?.name}</Text>
           <Text className=" text-1xl pt-2 mb-2">${detailProduct?.price}</Text>
         </View>

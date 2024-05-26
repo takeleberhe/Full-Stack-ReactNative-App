@@ -8,7 +8,6 @@ const {
   search_product,
   getCount,
   deleteProduct,
-  productGallery,
   getFeaturedProducts,
   createProductReview,
   getProductReviews,
@@ -25,11 +24,6 @@ prodRouter.get("/products/:id", getById);
 prodRouter.patch("/products/:id", updateProduct);
 prodRouter.get("/products/get/count", getCount);
 prodRouter.get("/featuredproducts/:count", getFeaturedProducts);
-prodRouter.patch(
-  "/products/gallery/:id",
-  uploadImage.array("images", 5),
-  productGallery
-);
 prodRouter.get("/products/search", search_product);
 prodRouter.put("/products/createreview", createProductReview);
 prodRouter.get("/products/getreview/:id", getProductReviews);

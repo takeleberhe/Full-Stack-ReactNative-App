@@ -85,11 +85,6 @@ const updateProduct = async (req, res, next) => {
     return res.json({ message: "invalid product id!" });
   }
   const id = req.params.id;
-  /* const category=await Category.findById(req.body.category);
-    if(!category){
-     return res.status(404).json({message :"invalid category!"});
-    } */
-
   const file = req.file;
   if (!file) {
     return res.send("pleace add file this can't be empty!");
@@ -146,11 +141,9 @@ const deleteProduct = async (req, res, next) => {
     return res.status(200).json({ message: "product successfully deleted!" });
   }
 };
-/*search_product*/
+    /*search_product*/
 
 const search_product = async (req, res, next) => {
-  /*searching product using query!*/
-  // const queryobj={...req.query}
   let products;
   try {
     products = await Product.find({ name: "beauty" })
@@ -165,7 +158,6 @@ const search_product = async (req, res, next) => {
     return res.status(200).json({ products });
   }
 };
-/*create Aggrigate(count,sum,average,max,min)from the database table functiones about statistics of data in the database! here!!!!*/
 const getCount = async (req, res) => {
   let productCount;
   try {
@@ -179,43 +171,9 @@ const getCount = async (req, res) => {
     return res.send({ productCount });
   }
 };
-/*create gallery of products*/
-const productGallery = async (req, res, next) => {
-  if (!mongoose.isValidObjectId(req.params.id)) {
-    return res.json({ message: "invalid product id!" });
-  }
-  const files = req.file;
-  if (!files) {
-    return res.status(404).json({ message: "no files required!" });
-  }
-  //const fileName=req.file.filename;
-  let imagepaths = [];
-  const basePath = `${req.protocol}://${req.get("host")}/public/upload/`;
-  if (files) {
-    files.map((file) => {
-      imagepaths.push(`${basePath}${file.fileName}`);
-    });
-  }
 
-  const product = await Product.findByIdAndUpdate(
-    req.params.id,
-    {
-      images: imagepaths,
-    },
-    {
-      new: true,
-    }
-  );
-
-  if (!product) {
-    return res.status(404).json({ message: "can't update gallary!" });
-  }
-  response.send(product);
-};
-
-/*create function to get the featured products displayed always on the home of our website!!*/
 const getFeaturedProducts = async (req, res) => {
-  let count = req.params.count ? req.params.count : 0; // how much items you want to display in home page!
+  let count = req.params.count ? req.params.count : 0; 
   let products;
   try {
     products = await Product.find({ isFeatured: true }).limit(+count);
@@ -239,14 +197,8 @@ const createProductReview = async (req, res, next) => {
     rating: Number(rating),
     comment: comment,
   };
-  //search the requested product if it is in the database using the id filter it first
+  
   const product = await Product.findById(productId);
-  /*
-                    then step two check weather this product was reviewd by this user or not
-                    1:if it was reviewd before by this user just write a function to update the review
-                    2:if this product was not reviewd by this user before then write a function
-                    to create new review.ended!!
-                  */
   const isReviewed = product.reviews.find(
     (r) => r.user.toString() === req.user.toString()
   );
@@ -268,7 +220,6 @@ const createProductReview = async (req, res, next) => {
   });
 };
 /*Get Product Review of a product function!*/
-
 const getProductReviews = async (req, res, next) => {
   const product = await Product.findById(req.body.id);
   res.status(200).json({
@@ -276,11 +227,11 @@ const getProductReviews = async (req, res, next) => {
     reviews: product.reviews,
   });
 };
-/*create delete product review function!*/
+
 const deleteReviews = async (req, res, next) => {
-  //filter the product first
+
   const product = await Product.findById(req.body.productId);
-  //filter the review with review id or req.query
+ 
   const reviews = product.reviews.filter(
     (r) => r.review._id.toString() === req.query.id.toString()
   );
@@ -311,7 +262,6 @@ module.exports = {
   getById,
   updateProduct,
   deleteProduct,
-  productGallery,
   getCount,
   search_product,
   getFeaturedProducts,
