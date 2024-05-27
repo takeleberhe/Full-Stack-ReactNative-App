@@ -24,20 +24,12 @@ const CustomDrawerContent = (props) => {
         label={"Camera"}
         onPress={() => router.push("/Camera/")}
       />
-      {/* Date time picker */}
-
       <DrawerItem
-        icon={(color, size) => (
-          <Ionicons name="" size={size} color={color} />
-        )}
         label={"Booking"}
         onPress={() => router.push("/Booking/")}
       />
       {/* Google Map integration */}
       <DrawerItem
-        icon={(color, size) => (
-          <Ionicons name="" size={size} color={color} />
-        )}
         label={"Map"}
         onPress={() => router.push("/Map/")}
       />
