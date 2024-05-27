@@ -96,7 +96,7 @@ const calanderPicker = () => {
           />
         </KeyboardAvoidingView>
       </View>
-      {/* conformation Button */}
+      {/* confirmation Button */}
       <TouchableOpacity className="mt-2">
         <Text style={styles.confirmBtn}>Confirm &Book</Text>
       </TouchableOpacity>

@@ -120,7 +120,7 @@ const getAllusers = async (req, res) => {
   }
 };
 
-/* req.user.id and req.user.isAdmin comes from the previous middleware!!! */
+
 /* Delete user */
 const deleteUser = async (req, res, next) => {
   const id = req.params.id;
@@ -214,8 +214,6 @@ const logout = async (req, res, next) => {
 /* update user profile */
 const updateUserProfile = async (req, res, next) => {
   let user = await User.findById(req.user.id);
-  //console.log(user);
-
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;

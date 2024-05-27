@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken");
 const User = require("../Model/User");
 
 /* Step one :Authentication */
-
 const verifyToken = async (req, res, next) => {
   const cookies = req.headers.cookie;
   const token = cookies?.split("=")[1];
