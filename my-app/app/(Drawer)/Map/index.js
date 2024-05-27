@@ -4,7 +4,6 @@ import MapView, { Callout, Circle, Marker } from "react-native-maps";
 import * as Location from "expo-location";
 
 const GoogleMap = () => {
-  const [mylocation, setMylocation] = useState(initialLocation);
   const [pin, setPin] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
