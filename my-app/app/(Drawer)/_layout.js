@@ -16,22 +16,6 @@ const CustomDrawerContent = (props) => {
         label={"Home"}
         onPress={() => router.push("/(tabs)/home/")}
       />
-      {/* drawer apage2 */}
-      <DrawerItem
-        icon={(color, size) => (
-          <Ionicons name="person" size={size} color={color} />
-        )}
-        label={"inbox"}
-        onPress={() => router.push("/inbox")}
-      />
-      {/* Drawer page3 */}
-      <DrawerItem
-        icon={(color, size) => (
-          <Ionicons name="home" size={size} color={color} />
-        )}
-        label={"signout"}
-        onPress={() => router.push("/signout")}
-      />
       {/* camera */}
       <DrawerItem
         icon={(color, size) => (
@@ -44,15 +28,15 @@ const CustomDrawerContent = (props) => {
 
       <DrawerItem
         icon={(color, size) => (
-          <Ionicons name="camera-sharp" size={size} color={color} />
+          <Ionicons name="" size={size} color={color} />
         )}
-        label={"DatePicker"}
-        onPress={() => router.push("/DatePicker/")}
+        label={"Booking"}
+        onPress={() => router.push("/Booking/")}
       />
       {/* Google Map integration */}
       <DrawerItem
         icon={(color, size) => (
-          <Ionicons name="camera-sharp" size={size} color={color} />
+          <Ionicons name="" size={size} color={color} />
         )}
         label={"Map"}
         onPress={() => router.push("/Map/")}

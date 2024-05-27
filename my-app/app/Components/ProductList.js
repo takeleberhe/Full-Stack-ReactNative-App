@@ -19,6 +19,8 @@ const ProductList = ({ data }) => {
           onPress={() => router.push(`/Components/${item._id}`)}
         >
           <View style={styles.imageContainer}>
+            {/* using Static image b/c it is not possible to fetch daynamic image from local host
+                in React Native this is only for testing purpose! */}
             <Image
               source={{
                 uri: "http://10.0.2.2:5000/public/uploads/1708597929856_.png",

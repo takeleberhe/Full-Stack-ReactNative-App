@@ -9,10 +9,10 @@ import {
 } from "./Reducer";
 axios.defaults.withCredentials = true;
 
-        /* global object(state)*/
+/* global object(state)*/
 const AuthContext = createContext();
 
-        /* parent component */
+/* parent component */
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState();
 
@@ -21,17 +21,17 @@ export const AuthContextProvider = ({ children }) => {
     product: [],
     error: "",
   });
-           /* cartegory state*/
+  /* cartegory state*/
   const [categoryState, categoryDispatch] = useReducer(addcategoryReducer, {
     categ: [],
     error: "",
   });
-             /* cart state */
+  /* cart state */
   const [cartstate, cartdispatch] = useReducer(cartReducer, {
     cart: [],
   });
 
-               /*search state*/
+  /*search state*/
   const [searchstate, searchDispatch] = useReducer(searchReducer, {
     searchQuery: "",
   });

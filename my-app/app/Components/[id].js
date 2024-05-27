@@ -1,13 +1,20 @@
-import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, SafeAreaView, Image } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import axios from "axios";
 
 const productDetail = () => {
   const { id } = useLocalSearchParams();
   const [detailProduct, setdetailProduct] = useState([]);
   const router = useRouter();
-  /* Fetch single product from back-end */
+  /* Fetch single product From API*/
   const singleProduct = async () => {
     const res = await axios
       .get(`http://192.168.0.9:5000/Api/products/${id}`, {
@@ -21,10 +28,18 @@ const productDetail = () => {
   useEffect(() => {
     singleProduct().then((data) => setdetailProduct(data.product));
   }, [id]);
-  /* it will display the file after the prduct is fetched from the back-end!!! */
+
   return (
     detailProduct && (
       <SafeAreaView>
+        <TouchableOpacity
+          className="p-4 mt-3"
+          onPress={() => router.push("/(tabs)/home/")}
+        >
+          <Ionicons name="arrow-back-outline" size={30} color="black" />
+        </TouchableOpacity>
+        {/* I am using static image b/c it is not possible to fetch dynamic 
+          image from localhost using source={{uri:detailProduct.image}} in React Native*/}
         <View>
           <Image
             source={{
@@ -37,10 +52,6 @@ const productDetail = () => {
           <Text className="text-1xl pt-2 mb-2">{detailProduct?.name}</Text>
           <Text className=" text-1xl pt-2 mb-2">${detailProduct?.price}</Text>
         </View>
-        <Button
-          title="Goback"
-          onPress={() => router.navigate("/(tabs)/home/")}
-        ></Button>
       </SafeAreaView>
     )
   );

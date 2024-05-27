@@ -6,7 +6,7 @@ const _layout = () => {
     <Stack>
       <Stack.Screen
         name="index"
-        options={{ headerTitle: "DatePicker" }}
+        options={{ headerTitle: "Booking" }}
       ></Stack.Screen>
     </Stack>
   );
