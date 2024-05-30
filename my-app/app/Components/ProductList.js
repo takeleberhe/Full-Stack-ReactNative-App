@@ -1,4 +1,6 @@
 import { useRouter } from "expo-router";
+import { memo } from "react";
+import { isEqual } from "lodash";
 import {
   View,
   Text,
@@ -48,7 +50,7 @@ const ProductList = ({ data }) => {
   );
 };
 
-export default ProductList;
+export default memo(ProductList, isEqual);
 const styles = StyleSheet.create({
   container: {
     paddingTop: Platform.OS === "android" ? 25 : 0,

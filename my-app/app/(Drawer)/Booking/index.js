@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useMemo,memo,useCallback } from "react";
 import {
   View,
   Text,
@@ -37,6 +37,28 @@ const calanderPicker = () => {
   useEffect(() => {
     getTime();
   }, []);
+  /* performance optimazation using useMemo */
+
+   /* const memoizedProducts=useMemo(()=>{
+    const getTime = () => {
+      const timeList = [];
+      for (i = 8; i <= 12; i++) {
+        timeList.push({
+          time: i + ":00 AM",
+        });
+      }
+      for (i = 1; i <= 7; i++) {
+        timeList.push({
+          time: i + ":00 PM",
+        });
+      }
+      setTimeList(timeList);
+    };
+    useEffect(() => {
+      getTime();
+    }, []);
+   },[selectedTime]) */
+
   return (
     <ScrollView>
       <TouchableOpacity
