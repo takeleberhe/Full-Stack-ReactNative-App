@@ -5,12 +5,12 @@ import AuthContext from "../../Context/AuthContext/AuthContext";
 const SearchBar = () => {
   const { searchDispatch } = useContext(AuthContext);
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView className="flex-1 rounded-5xl p-5 mb-10 w-full h-9 ">
       <StatusBar style="light" backgroundColor="blue" />
       <TextInput
+        className="text-1xl p-2 h-20 w-full rounded-md bg-slate-200 mb-5"
         placeholder="search..."
         clearButtonMode="alaways"
-        style={styles.inputText}
         autoCapitalize="none"
         autoCorrect={false}
         onChangeText={(text) => {

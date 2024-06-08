@@ -16,18 +16,18 @@ const ProductList = ({ data }) => {
   const router = useRouter();
   const renderItem = ({ item, index }) => {
     return (
-      <SafeAreaView style={styles.listContainer}>
+      <SafeAreaView className="flex-1 p-10 rounded-2xl gap-4 bg-gray-200">
         <TouchableOpacity
           onPress={() => router.push(`/Components/${item._id}`)}
         >
-          <View style={styles.imageContainer}>
+          <View className="m-15 rounded-2xl">
             {/* using Static image b/c it is not possible to fetch daynamic image from local host
                 in React Native this is only for testing purpose! */}
             <Image
               source={{
                 uri: "http://10.0.2.2:5000/public/uploads/1708597929856_.png",
               }}
-              style={{ height: 300, width: 300 }}
+              className="w-72 h-72"
             />
           </View>
           <View className="flex-row justify-around">
@@ -55,18 +55,9 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: Platform.OS === "android" ? 25 : 0,
   },
-  listContainer: {
-    flex: 1,
-    backgroundColor: "white",
-    margin: 10,
-    borderRadius: 20,
-  },
+
   imageContainer: {
     margin: 15,
     borderRadius: 10,
-  },
-  image: {
-    width: 300,
-    height: 300,
   },
 });

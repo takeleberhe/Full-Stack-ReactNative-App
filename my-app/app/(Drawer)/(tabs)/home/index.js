@@ -1,10 +1,7 @@
 import React, {
   useContext,
   useCallback,
-  useMemo,
   memo,
-  lazy,
-  Suspense,
 } from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";

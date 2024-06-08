@@ -17,7 +17,7 @@ const productDetail = () => {
   /* Fetch single product From API*/
   const singleProduct = async () => {
     const res = await axios
-      .get(`http://192.168.0.9:5000/Api/products/${id}`, {
+      .get(`http://10.0.2.2:5000/Api/products/${id}`, {
         withCredentials: true,
       })
       .catch((err) => console.log(err));
