@@ -15,28 +15,26 @@ const ProductList = ({ data }) => {
   const router = useRouter();
   const renderItem = ({ item, index }) => {
     return (
-      <SafeAreaView className="flex w-96 bg-green-300 ">
-        <View
-          className="flex-row gap-4
-           shadow-md box-content rounded-lg h-80 w-80 p-10 "
+      <SafeAreaView
+        className="flex-col w-86 gap-x-5 rounded-lg 
+      shadow-lg p-15 pb-5 overflow-auto bg-white mb-5"
+      >
+        <TouchableOpacity
+          onPress={() => router.push(`/Components/${item._id}`)}
+          className="m-5"
         >
-          <TouchableOpacity
-            onPress={() => router.push(`/Components/${item._id}`)}
-            className="m-5"
-          >
-            {/* I am using Static image b/c it is not possible to fetch daynamic image from localhost
+          {/* I am using Static image b/c it is not possible to fetch daynamic image from localhost
                 in React Native this is only for testing purpose! */}
-            <Image
-              source={{
-                uri: "http://10.0.2.2:5000/public/uploads/1708597929856_.png",
-              }}
-              className="w-[300px] h-[300px]"
-            />
-          </TouchableOpacity>
-          <View className="flex-row justify-around">
-            <Text className="text-1xl pt-2 mb-2">{item.name}</Text>
-            <Text className=" text-1xl pt-2 mb-2">${item.price}</Text>
-          </View>
+          <Image
+            source={{
+              uri: "http://10.0.2.2:5000/public/uploads/1708597929856_.png",
+            }}
+            className="w-[300px] h-[300px]"
+          />
+        </TouchableOpacity>
+        <View className="flex-row justify-around">
+          <Text className="text-1xl pt-2 mb-2">{item.name}</Text>
+          <Text className=" text-1xl pt-2 mb-2">${item.price}</Text>
         </View>
       </SafeAreaView>
     );

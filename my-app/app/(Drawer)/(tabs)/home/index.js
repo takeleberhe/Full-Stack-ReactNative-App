@@ -1,11 +1,9 @@
-import React, { useContext, useCallback, memo, useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
 import ProductList from "../../../Components/ProductList";
 import AuthContext from "../../../../Context/AuthContext/AuthContext";
 import SearchBar from "../../../Components/SearchBar";
-import { isEqual } from "lodash";
-//const SearchBar = lazy(() => import("../../../Components/SearchBar"));
 
 const Homepage = () => {
   const {
@@ -22,7 +20,7 @@ const Homepage = () => {
       });
     }
     return filteredProducts;
-  }, [searchQuery]);
+  }, [product, searchQuery]);
 
   return (
     <View className="flex-1 items-center">
@@ -38,4 +36,4 @@ const Homepage = () => {
   );
 };
 
-export default memo(Homepage, isEqual);
+export default Homepage;
