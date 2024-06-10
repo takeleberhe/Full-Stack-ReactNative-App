@@ -1,8 +1,4 @@
-import React, {
-  useContext,
-  useCallback,
-  memo,
-} from "react";
+import React, { useContext, useCallback, memo, useMemo } from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
 import ProductList from "../../../Components/ProductList";
@@ -17,8 +13,8 @@ const Homepage = () => {
     searchstate: { searchQuery },
   } = useContext(AuthContext);
 
-  /* performance optimazation using useCallback hook */
-  const memoizedProducts = useCallback(() => {
+  /* performance optimazation using useMemo hook  */
+  const memoizedProducts = useMemo(() => {
     let filteredProducts = product;
     if (searchQuery) {
       filteredProducts = filteredProducts.filter((prod) => {
@@ -26,14 +22,14 @@ const Homepage = () => {
       });
     }
     return filteredProducts;
-  }, [product]);
+  }, [searchQuery]);
 
   return (
     <View className="flex-1 items-center">
       {/* custom Search component */}
       <Stack.Screen
         options={{
-          header: () =><SearchBar />
+          header: () => <SearchBar />,
         }}
       ></Stack.Screen>
       {/* product list custom component */}

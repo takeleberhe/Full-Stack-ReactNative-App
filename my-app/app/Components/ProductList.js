@@ -6,7 +6,6 @@ import {
   Text,
   FlatList,
   Image,
-  StyleSheet,
   SafeAreaView,
   Platform,
   TouchableOpacity,
@@ -16,48 +15,41 @@ const ProductList = ({ data }) => {
   const router = useRouter();
   const renderItem = ({ item, index }) => {
     return (
-      <SafeAreaView className="flex-1 p-10 rounded-2xl gap-4 bg-gray-200">
-        <TouchableOpacity
-          onPress={() => router.push(`/Components/${item._id}`)}
+      <SafeAreaView className="flex w-96 bg-green-300 ">
+        <View
+          className="flex-row gap-4
+           shadow-md box-content rounded-lg h-80 w-80 p-10 "
         >
-          <View className="m-15 rounded-2xl">
-            {/* using Static image b/c it is not possible to fetch daynamic image from local host
+          <TouchableOpacity
+            onPress={() => router.push(`/Components/${item._id}`)}
+            className="m-5"
+          >
+            {/* I am using Static image b/c it is not possible to fetch daynamic image from localhost
                 in React Native this is only for testing purpose! */}
             <Image
               source={{
                 uri: "http://10.0.2.2:5000/public/uploads/1708597929856_.png",
               }}
-              className="w-72 h-72"
+              className="w-[300px] h-[300px]"
             />
-          </View>
+          </TouchableOpacity>
           <View className="flex-row justify-around">
             <Text className="text-1xl pt-2 mb-2">{item.name}</Text>
             <Text className=" text-1xl pt-2 mb-2">${item.price}</Text>
           </View>
-        </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   };
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={data()}
+        data={data}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
       />
     </TouchableOpacity>
   );
 };
-
 export default memo(ProductList, isEqual);
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: Platform.OS === "android" ? 25 : 0,
-  },
-
-  imageContainer: {
-    margin: 15,
-    borderRadius: 10,
-  },
-});

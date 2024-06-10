@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
-import { TextInput, StyleSheet, StatusBar, SafeAreaView } from "react-native";
+import { TextInput, StatusBar, SafeAreaView } from "react-native";
 import AuthContext from "../../Context/AuthContext/AuthContext";
 
 const SearchBar = () => {
   const { searchDispatch } = useContext(AuthContext);
   return (
-    <SafeAreaView className="flex-1 rounded-5xl p-5 w-full h-9 ">
+    <SafeAreaView className="justify-center items-center rounded-s-md
+     pt-5 min-w-[400px] w-full border-lime-50 mb-6">
       <StatusBar style="light" backgroundColor="blue" />
       <TextInput
-        className="text-1xl p-2 h-20 w-full rounded-md bg-slate-200 mb-5"
+        className="bg-transparent w-[400px] font-serif text-2xl p-4
+         bg-slate-200 rounded-md outline-none
+           ml-1 text-white bg-gray-200
+         "
         placeholder="search..."
         clearButtonMode="alaways"
         autoCapitalize="none"
