@@ -1,21 +1,10 @@
-import { useRouter } from "expo-router";
-import { memo } from "react";
-import { isEqual } from "lodash";
-import {
-  View,
-  Text,
-  FlatList,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 
-const ProductList = ({ data }) => {
-  const router = useRouter();
+const categoryList = ({ category }) => {
   const renderItem = ({ item, index }) => {
     return (
       <View>
         <TouchableOpacity
-          onPress={() => router.push(`/Components/${item._id}`)}
           className="flex-col w-86 gap-x-5 rounded-lg 
           shadow-lg p-15 pb-5 overflow-auto bg-white mb-5"
         >
@@ -31,7 +20,6 @@ const ProductList = ({ data }) => {
           </View>
           <View className="flex-row justify-around">
             <Text className="text-1xl pt-2 mb-2">{item.name}</Text>
-            <Text className=" text-1xl pt-2 mb-2">${item.price}</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -41,11 +29,11 @@ const ProductList = ({ data }) => {
     <TouchableOpacity>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={data}
+        data={category}
         renderItem={renderItem}
         keyExtractor={(item) => item._id}
       />
     </TouchableOpacity>
   );
 };
-export default memo(ProductList, isEqual);
+export default categoryList;

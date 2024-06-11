@@ -90,7 +90,7 @@ export const AuthContextProvider = ({ children }) => {
 
   /* Categories Fetch API Call */
   async function fetchCategory() {
-    const response = await axios.get("http://localhost:5000/Api/category");
+    const response = await axios.get("http://10.0.2.2:5000/Api/category");
     const data = await response.data;
     //console.log(data);
     return data;

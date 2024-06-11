@@ -4,10 +4,12 @@ import { Stack } from "expo-router";
 import ProductList from "../../../Components/ProductList";
 import AuthContext from "../../../../Context/AuthContext/AuthContext";
 import SearchBar from "../../../Components/SearchBar";
+import CategoryList from "../../../Components/CategoryList";
 
 const Homepage = () => {
   const {
     state: { product },
+    categoryState: { categ },
     searchstate: { searchQuery },
   } = useContext(AuthContext);
 
@@ -30,7 +32,8 @@ const Homepage = () => {
           header: () => <SearchBar />,
         }}
       ></Stack.Screen>
-      {/* product list custom component */}
+      {/* product & Category list custom component */}
+      <CategoryList category={categ} />
       <ProductList data={memoizedProducts} />
     </View>
   );
