@@ -39,7 +39,7 @@ const calanderPicker = () => {
   }, []);
   /* performance optimazation using useMemo */
 
-   /* const memoizedProducts=useMemo(()=>{
+   const memoizedProducts=useMemo(()=>{
     const getTime = () => {
       const timeList = [];
       for (i = 8; i <= 12; i++) {
@@ -57,7 +57,7 @@ const calanderPicker = () => {
     useEffect(() => {
       getTime();
     }, []);
-   },[selectedTime]) */
+   },[selectedTime])
 
   return (
     <ScrollView>
