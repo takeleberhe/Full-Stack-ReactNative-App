@@ -1,6 +1,8 @@
+import { useRouter } from "expo-router";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 
 const categoryList = ({ category }) => {
+  const router = useRouter();
   const renderItem = ({ item, index }) => {
     return (
       <View>
@@ -20,6 +22,7 @@ const categoryList = ({ category }) => {
           </View>
           <View className="flex-row justify-around">
             <Text className="text-1xl pt-2 mb-2">{item.name}</Text>
+            <Text className=" text-1xl pt-2 mb-2">${item.price}</Text>
           </View>
         </TouchableOpacity>
       </View>

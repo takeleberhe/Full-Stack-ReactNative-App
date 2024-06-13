@@ -33,7 +33,7 @@ const Homepage = () => {
         }}
       ></Stack.Screen>
       {/* product & Category list custom component */}
-      <CategoryList category={categ} />
+     {/*  <CategoryList category={categ} /> */}
       <ProductList data={memoizedProducts} />
     </View>
   );
