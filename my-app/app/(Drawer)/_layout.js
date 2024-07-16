@@ -24,10 +24,10 @@ const CustomDrawerContent = (props) => {
         label={"Camera"}
         onPress={() => router.push("/Camera/")}
       />
-      <DrawerItem
+      {/* <DrawerItem
         label={"Booking"}
         onPress={() => router.push("/Booking/")}
-      />
+      /> */}
       {/* Google Map integration */}
       <DrawerItem
         label={"Map"}

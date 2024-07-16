@@ -66,9 +66,7 @@ export const AuthContextProvider = ({ children }) => {
     });
     /* logout from client side or remove values and tokens the user from browser */
     localStorage.removeItem("userprofile");
-    //how to clear cookies from browser when we logout!!!
     setUser(null);
-    // navigate("/rlogin");
   };
 
   /* Fetch Product API CALL */
